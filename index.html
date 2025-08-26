@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Southern Shine Detailing | Premium Car Detailing in Southern Spain</title>
+  <meta name="description" content="Premium mobile car detailing in Southern Spain. Exterior, interior, ceramic coating. Book via WhatsApp. Marbella · Estepona · Mijas and nearby." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================
+       THEME: Quick customization using CSS variables
+       Change colors, radii, shadows, spacing here.
+       ========================================================= */
+    :root{
+      --bg: #0f1216;                 /* app background */
+      --card: #151a21;               /* card background */
+      --muted: #8ea1b2;              /* secondary text */
+      --text: #eaf2f9;               /* primary text */
+      --brand: #31c0ff;              /* Mediterranean aqua */
+      --brand-2: #ffd34d;            /* sunny accent */
+      --accent: #4be2a1;             /* success accent */
+      --danger: #ff6b6b;             /* error/alert */
+      --radius: 18px;                /* rounded corners */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --maxw: 1200px;                /* content width */
+      --pad: clamp(16px, 4vw, 28px); /* container padding */
+    }
+
+    /* Global reset & typography */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: radial-gradient(1200px 700px at 80% -10%, rgba(49,192,255,.15), transparent 60%),
+      radial-gradient(800px 500px at -10% 10%, rgba(255,211,77,.08), transparent 50%), var(--bg);
+      color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      line-height: 1.55;
+    }
+    h1,h2,h3 { font-family: Outfit, Inter, system-ui, sans-serif; line-height: 1.2; margin: 0 0 10px; }
+    h1 { font-size: clamp(28px, 5vw, 52px); letter-spacing: -0.01em; }
+    h2 { font-size: clamp(22px, 3.6vw, 34px); }
+    h3 { font-size: clamp(18px, 2.4vw, 22px); }
+    p { margin: 0 0 14px; color: var(--muted); }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; border-radius: calc(var(--radius) - 6px); }
+
+    /* Layout helpers */
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+    .grid { display: grid; gap: 18px; }
+    .two { grid-template-columns: 1fr; }
+    @media (min-width: 900px){ .two { grid-template-columns: 1.1fr 1fr; } }
+    .three { grid-template-columns: 1fr; }
+    @media (min-width: 900px){ .three { grid-template-columns: repeat(3,1fr); } }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px);
+      background: linear-gradient( to bottom, rgba(15,18,22,.8), rgba(15,18,22,.3));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { display: flex; gap: 10px; align-items: center; font-weight: 800; letter-spacing: .2px; }
+    .logo-badge { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #0b0f13; font-weight: 900; }
+    nav a { opacity: .9; font-weight: 600; }
+    .nav-links { display: none; gap: 18px; }
+    @media (min-width: 900px){ .nav-links { display: flex; } }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 999px; font-weight: 700; border: 1px solid rgba(255,255,255,.12); transition: transform .15s ease, background .15s ease, box-shadow .15s ease; }
+    .btn-primary { background: linear-gradient(135deg, var(--brand), #73ddff); color: #07202a; border: none; box-shadow: var(--shadow); }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-whatsapp { background: #25D366; color: #0b0f13; border: none; }
+
+    /* Hero */
+    .hero { padding: 60px 0 30px; }
+    .hero-card { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .hero-media { position: relative; min-height: 260px; background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; }
+    .hero-badge { position: absolute; bottom: 16px; left: 16px; background: rgba(15,18,22,.7); padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); font-weight: 700; }
+    .hero-content { padding: 28px; }
+    .highlights { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .chip { padding: 8px 12px; border-radius: 999px; background: rgba(49,192,255,.12); border: 1px solid rgba(49,192,255,.28); color: #bfeeff; font-weight: 600; }
+
+    /* Cards */
+    .card { background: var(--card); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .card h3 { margin-bottom: 6px; }
+
+    /* Services */
+    .service { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; }
+    .service .icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.06); }
+
+    /* Before/After slider */
+    .ba-wrap { position: relative; overflow: hidden; border-radius: calc(var(--radius) - 6px); height: 320px; }
+    .ba-after, .ba-before { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    .ba-before { clip-path: inset(0 50% 0 0); }
+    .ba-slider { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: white; opacity: .8; }
+    .ba-handle { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 46px; height: 46px; border-radius: 50%; background: white; color: #0a0e12; display: grid; place-items: center; font-weight: 900; box-shadow: 0 6px 18px rgba(0,0,0,.35); }
+    .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
+
+    /* Pricing */
+    .price { display: flex; align-items: baseline; gap: 8px; margin-top: 6px; }
+    .price strong { font-size: 28px; }
+    .tag { display: inline-block; font-weight: 700; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14); }
+
+    /* Testimonials */
+    .testi { display: grid; grid-template-columns: 48px 1fr; gap: 12px; align-items: start; }
+    .avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); }
+
+    /* Footer & contact */
+    footer { border-top: 1px solid rgba(255,255,255,.08); margin-top: 40px; }
+
+    /* Mobile quick action (sticky) */
+    .sticky-cta { position: fixed; right: 16px; bottom: 16px; display: grid; gap: 10px; z-index: 60; }
+    .fab { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; box-shadow: var(--shadow); border: none; cursor: pointer; }
+    .fab-primary { background: linear-gradient(135deg, var(--brand), #73ddff); color: #07202a; }
+    .fab-wa { background: #25D366; color: #0b0f13; }
+
+    /* Language switcher (simple) */
+    .lang { display: inline-flex; gap: 8px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 4px; }
+    .lang button { background: transparent; border: none; color: var(--muted); font-weight: 700; padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+    .lang button.active { background: rgba(255,255,255,.08); color: var(--text); }
+
+    /* Utility */
+    .mt-6{ margin-top: 24px; } .mt-8{ margin-top: 32px; } .mt-10{ margin-top: 40px; }
+    .center{ text-align: center; }
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-badge">SS</div>
+        <div>
+          <div style="font-size: 18px;">Southern Shine</div>
+          <div style="font-size:12px;color:var(--muted);font-weight:600;">Premium Detailing</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn btn-primary" href="https://wa.me/34600000000" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card grid two">
+        <div class="hero-media">
+          <div class="hero-badge">Marbella · Estepona · Mijas</div>
+        </div>
+        <div class="hero-content">
+          <h1>Premium Car Detailing in Southern Spain</h1>
+          <p>Showroom shine with a sunny Mediterranean touch. Mobile service at your home or marina, using premium products and careful craftsmanship.</p>
+          <div class="highlights">
+            <span class="chip">Mobile On‑Site</span>
+            <span class="chip">Ceramic Options</span>
+            <span class="chip">English · Español</span>
+            <span class="chip">Satisfaction Guaranteed</span>
+          </div>
+          <div class="mt-8">
+            <a class="btn btn-primary" href="#pricing">Book Your Detailing</a>
+            <a class="btn" href="#services">See Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="mt-10">
+    <div class="container">
+      <h2>Services</h2>
+      <p>Choose a package or customize to your vehicle’s needs. All services are fully mobile.</p>
+      <div class="grid three mt-6">
+        <div class="card">
+          <div class="service">
+            <div class="icon">🧼</div>
+            <div>
+              <h3>Exterior Detailing</h3>
+              <p>Foam wash, decontamination, machine polish for gloss, wheel & tire treatment.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="service">
+            <div class="icon">🧽</div>
+            <div>
+              <h3>Interior Deep Clean</h3>
+              <p>Steam, vacuum, stain removal, leather clean & condition, ozone on request.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="service">
+            <div class="icon">✨</div>
+            <div>
+              <h3>Ceramic Coating</h3>
+              <p>Durable protection and extreme hydrophobic gloss. 1–3 year options.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="service">
+            <div class="icon">🚐</div>
+            <div>
+              <h3>Mobile On‑Site</h3>
+              <p>We come to you—home, office, or marina. Fully insured and reliable.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="service">
+            <div class="icon">🛡️</div>
+            <div>
+              <h3>Paint Protection</h3>
+              <p>Sealants, waxes, and PPF referrals to keep paint safe under Spanish sun.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="service">
+            <div class="icon">🕒</div>
+            <div>
+              <h3>Maintenance Plans</h3>
+              <p>Bi‑weekly or monthly upkeep to keep that fresh detail look all year.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before/After -->
+  <section id="gallery" class="mt-10">
+    <div class="container">
+      <h2>Before & After</h2>
+      <p>Slide to compare transformation results from real details.</p>
+      <div class="grid two mt-6">
+        <div class="card">
+          <div class="ba-wrap" data-before="https://images.unsplash.com/photo-1542367597-8849eb47a8a6?q=80&w=1600&auto=format&fit=crop" data-after="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop">
+            <div class="ba-after"></div>
+            <div class="ba-before"></div>
+            <div class="ba-slider"></div>
+            <div class="ba-handle">↔</div>
+            <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Before and After slider" />
+          </div>
+        </div>
+        <div class="card">
+          <div class="ba-wrap" data-before="https://images.unsplash.com/photo-1549923746-c502d488b3ea?q=80&w=1600&auto=format&fit=crop" data-after="https://images.unsplash.com/photo-1550355291-bbee04a92027?q=80&w=1600&auto=format&fit=crop">
+            <div class="ba-after"></div>
+            <div class="ba-before"></div>
+            <div class="ba-slider"></div>
+            <div class="ba-handle">↔</div>
+            <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Before and After slider" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="mt-10">
+    <div class="container">
+      <h2>Pricing</h2>
+      <p>Transparent packages with room to customize. Prices vary by vehicle size & condition.</p>
+      <div class="grid three mt-6">
+        <div class="card">
+          <span class="tag">Basic</span>
+          <h3>Exterior Refresh</h3>
+          <p>Foam wash, decon, spray sealant, wheels & tires, windows.</p>
+          <div class="price"><strong>€69</strong><span class="muted">from</span></div>
+          <a class="btn mt-6 btn-primary" href="https://wa.me/34600000000?text=Hi!%20I'm%20interested%20in%20the%20Exterior%20Refresh">Book Basic</a>
+        </div>
+        <div class="card" style="border:1px solid rgba(49,192,255,.5)">
+          <span class="tag" style="background: rgba(49,192,255,.15); border-color: rgba(49,192,255,.4);">Most Popular</span>
+          <h3>Full Detail</h3>
+          <p>Exterior + interior deep clean, light polish, fabric & leather care.</p>
+          <div class="price"><strong>€149</strong><span class="muted">from</span></div>
+          <a class="btn mt-6 btn-primary" href="https://wa.me/34600000000?text=Hi!%20I'm%20interested%20in%20the%20Full%20Detail">Book Full</a>
+        </div>
+        <div class="card">
+          <span class="tag">Ultimate</span>
+          <h3>Ceramic Protection</h3>
+          <p>Gloss enhancement + 1–3 year ceramic coating for body & wheels.</p>
+          <div class="price"><strong>€399</strong><span class="muted">from</span></div>
+          <a class="btn mt-6 btn-primary" href="https://wa.me/34600000000?text=Hi!%20I'm%20interested%20in%20the%20Ceramic%20Protection">Book Ceramic</a>
+        </div>
+      </div>
+      <p style="margin-top:10px;color:var(--muted)">Add‑ons: Pet hair removal · Ozone treatment · Convertible roof care · Engine bay clean</p>
+    </div>
+  </section>
+
+  <!-- Why Choose Us / Trust -->
+  <section class="mt-10">
+    <div class="container grid three">
+      <div class="card">
+        <h3>Local & Trusted</h3>
+        <p>Family‑run in Costa del Sol. On time, insured, and careful with every detail.</p>
+      </div>
+      <div class="card">
+        <h3>Premium Products</h3>
+        <p>pH‑neutral chemicals, safe wash methods, and pro equipment for the best finish.</p>
+      </div>
+      <div class="card">
+        <h3>Satisfaction Guarantee</h3>
+        <p>If something’s not perfect, we’ll fix it—no questions asked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="mt-10">
+    <div class="container grid two">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1612197527762-8cfb55b6181c?q=80&w=1600&auto=format&fit=crop" alt="Owner working on a car in the sun"/>
+      </div>
+      <div class="card">
+        <h2>About Southern Shine</h2>
+        <p>Born from a passion for pristine cars and sunny drives along the coast. We treat every vehicle like our own—whether it’s your daily driver or weekend cruiser.</p>
+        <p>Serving Marbella, Estepona, Mijas and nearby towns. English & Spanish spoken.</p>
+        <div class="mt-6">
+          <a class="btn" href="#gallery">See Our Work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="mt-10">
+    <div class="container grid two">
+      <div class="card">
+        <h2>Get a Quote</h2>
+        <p>Tell us about your car and preferred date. We’ll reply quickly via WhatsApp or email.</p>
+        <form class="mt-6" onsubmit="event.preventDefault(); sendQuote(this);">
+          <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 12px;">
+            <input required name="name" placeholder="Your name" style="padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#0e1217;color:var(--text)">
+            <input required name="phone" placeholder="Phone or WhatsApp" style="padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#0e1217;color:var(--text)">
+          </div>
+          <input name="car" placeholder="Car make & model" style="margin-top:12px;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#0e1217;color:var(--text)">
+          <select name="service" style="margin-top:12px;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#0e1217;color:var(--text)">
+            <option value="Full Detail">Full Detail</option>
+            <option value="Exterior">Exterior Detailing</option>
+            <option value="Interior">Interior Deep Clean</option>
+            <option value="Ceramic">Ceramic Coating</option>
+            <option value="Other">Other / Not sure</option>
+          </select>
+          <textarea name="message" rows="4" placeholder="Tell us what you need (condition, location, dates)" style="margin-top:12px;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#0e1217;color:var(--text)"></textarea>
+          <div class="mt-6" style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-primary" type="submit">Send via WhatsApp</button>
+            <a class="btn" href="mailto:hello@southernshine.es">Email Instead</a>
+          </div>
+        </form>
+      </div>
+      <div class="card">
+        <h2>Service Area</h2>
+        <p>We’re mobile across Costa del Sol. If you’re nearby, we can likely come to you.</p>
+        <div class="mt-6" style="overflow:hidden;border-radius:12px;">
+          <!-- Replace with your map embed -->
+          <iframe title="Map" src="https://maps.google.com/maps?q=Marbella%20Spain&t=&z=10&ie=UTF8&iwloc=&output=embed" width="100%" height="280" style="border:0;filter:grayscale(40%) contrast(1.05)"></iframe>
+        </div>
+        <div class="mt-6">
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn" href="tel:+34600000000">Call +34 600 000 000</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/34600000000" target="_blank" rel="noopener">WhatsApp Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-10">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:18px 0;">
+      <div style="opacity:.8">© <span id="year"></span> Southern Shine Detailing · All rights reserved</div>
+      <div class="lang" aria-label="Language switcher">
+        <button class="active" data-lang="en">EN</button>
+        <button data-lang="es">ES</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating action buttons (mobile helpers) -->
+  <div class="sticky-cta" aria-hidden="false">
+    <a class="fab fab-primary" href="#pricing" title="Book"><span>📅</span></a>
+    <a class="fab fab-wa" href="https://wa.me/34600000000" target="_blank" rel="noopener" title="WhatsApp"><span>💬</span></a>
+  </div>
+
+  <script>
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Initialize Before/After sliders
+    document.querySelectorAll('.ba-wrap').forEach(function(wrap){
+      const before = wrap.querySelector('.ba-before');
+      const after = wrap.querySelector('.ba-after');
+      const slider = wrap.querySelector('.ba-slider');
+      const handle = wrap.querySelector('.ba-handle');
+      const range = wrap.querySelector('.ba-range');
+      const beforeUrl = wrap.getAttribute('data-before');
+      const afterUrl = wrap.getAttribute('data-after');
+      before.style.backgroundImage = `url(${beforeUrl})`;
+      after.style.backgroundImage = `url(${afterUrl})`;
+
+      const setPos = (val) => {
+        const pct = Math.min(100, Math.max(0, val));
+        before.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+        slider.style.left = pct + '%';
+        handle.style.left = pct + '%';
+      }
+      setPos(range.value);
+
+      const move = (e) => {
+        const rect = wrap.getBoundingClientRect();
+        const x = (e.touches? e.touches[0].clientX : e.clientX) - rect.left;
+        const pct = (x / rect.width) * 100; setPos(pct); range.value = pct;
+      };
+
+      wrap.addEventListener('mousemove', (e) => { if(e.buttons===1) move(e); });
+      wrap.addEventListener('touchmove', move, {passive:true});
+      range.addEventListener('input', (e)=> setPos(e.target.value));
+    });
+
+    // Simple language toggler (replace text snippets)
+    const dictionary = {
+      es: {
+        hero: 'Detailing premium en el sur de España',
+        book: 'Reserva tu servicio',
+        services: 'Servicios',
+        gallery: 'Galería',
+        pricing: 'Precios',
+        about: 'Sobre nosotros',
+        contact: 'Contacto'
+      }
+    };
+    const buttons = document.querySelectorAll('.lang button');
+    buttons.forEach(btn=>btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const lang = btn.getAttribute('data-lang');
+      if(lang==='es'){
+        document.querySelector('h1').textContent = dictionary.es.hero;
+        document.querySelector('a.btn.btn-primary[href="#pricing"]').textContent = dictionary.es.book;
+        document.querySelectorAll('.nav-links a')[0].textContent = dictionary.es.services;
+        document.querySelectorAll('.nav-links a')[1].textContent = dictionary.es.gallery;
+        document.querySelectorAll('.nav-links a')[2].textContent = dictionary.es.pricing;
+        document.querySelectorAll('.nav-links a')[3].textContent = dictionary.es.about;
+        document.querySelectorAll('.nav-links a')[4].textContent = dictionary.es.contact;
+      } else {
+        // Simple revert to English defaults
+        location.reload();
+      }
+    }));
+
+    // Send quote via WhatsApp
+    function sendQuote(form){
+      const data = new FormData(form);
+      const name = encodeURIComponent(data.get('name'));
+      const phone = encodeURIComponent(data.get('phone'));
+      const car = encodeURIComponent(data.get('car')||'');
+      const service = encodeURIComponent(data.get('service'));
+      const msg = encodeURIComponent(data.get('message')||'');
+      const text = `Hi, I\'m ${name}. Phone/WA: ${phone}. Car: ${car}. Service: ${service}. ${msg}`;
+      const url = `https://wa.me/34600000000?text=${text}`; // Replace with your number
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
